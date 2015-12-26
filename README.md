@@ -14,7 +14,7 @@ gulp.src('/src/**/*.js')
   .pipe(vinylServe({port: 7000}))
 ```
 
-This starts the server at port 7000 and `localhost:7000/foo.js` responses the transformed contents of `src/foo.js`.
+This starts the server at port 7000 and, for example, `localhost:7000/foo.js` responses the transformed contents of `src/foo.js`.
 
 # API
 
@@ -25,7 +25,13 @@ The vinyl-server module takes the following options.
 ### port
 
 - type: `number`
-- The port number of the
+- The port number of the server
+
+# Install
+
+```
+npm install vinyl-serve
+```
 
 # License
 
