@@ -14,7 +14,6 @@ describe('VinylServer', function () {
 
     })
 
-
     describe('start', function () {
 
         it('fails to start if the port is already in use', function (done) {
