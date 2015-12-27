@@ -18,7 +18,7 @@ describe('vinyl-serve', function () {
 
             this.queue(vinyl)
 
-        })).pipe(vinylServe({port: 7001}))
+        })).pipe(vinylServe(7001))
 
         setTimeout(function () { done() }, 300)
 
@@ -45,13 +45,42 @@ describe('vinyl-serve', function () {
             done()
 
         })
+
+    })
+
+    it('starts the server with port 7000 when none given', function (done) {
+
+        vinylServe()
+
+        setTimeout(function () {
+
+            request.get('localhost:7000/').end(function (err, res) {
+
+                expect(res.status).to.equal(200)
+
+                done()
+
+            })
+
+        }, 300)
+
+    })
+
+    it('throws when the given port number is not number, not undefined', function () {
+
+        expect(function () {
+
+            vinylServe('foo')
+
+        }).to.throw()
+
     })
 
     describe('restart', function () {
 
-        it('restart the server', function (done) {
+        it('restarts the server', function (done) {
 
-            vinylServe.restart().then(function () {
+            vinylServe.restart(7001).then(function () {
 
                 request.get('localhost:7001').end(function (err, res) {
 
@@ -64,13 +93,23 @@ describe('vinyl-serve', function () {
 
         })
 
+        it('throws when no server for the port number', function () {
+
+            expect(function () {
+
+                vinylServe.restart(7002)
+
+            }).to.throw()
+
+        })
+
     })
 
     describe('stop', function () {
 
-        it('restart the server', function (done) {
+        it('stops the server', function (done) {
 
-            vinylServe.stop().then(function () {
+            vinylServe.stop(7001).then(function () {
 
                 request.get('localhost:7001').end(function (err) {
 
@@ -82,6 +121,16 @@ describe('vinyl-serve', function () {
                 })
 
             })
+
+        })
+
+        it('throws when no server for the port number', function () {
+
+            expect(function () {
+
+                vinylServe.stop(7002)
+
+            }).to.throw()
 
         })
 
