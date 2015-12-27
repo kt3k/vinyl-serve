@@ -3,7 +3,7 @@
 
 var request = require('superagent')
 var expect = require('chai').expect
-var vinylServe = require('./')
+var vinylServe = require('../')
 var through = require('through')
 var browserify = require('browserify')
 var vfs = require('vinyl-fs')

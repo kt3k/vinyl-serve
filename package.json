@@ -19,8 +19,8 @@
     "vinyl-fs": "^2.2.1"
   },
   "scripts": {
-    "test": "_mocha spec.js",
-    "cov": "nyc --reporter=lcov _mocha spec.js",
+    "test": "_mocha spec/",
+    "cov": "nyc --reporter=lcov _mocha spec/",
     "codecov": "codecov < coverage/lcov.info",
     "lint": "souffle"
   },
