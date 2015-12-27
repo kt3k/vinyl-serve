@@ -50,7 +50,7 @@
     "nyc": {
       "exclude": [
         "index.js",
-        "spec.js"
+        "spec/"
       ]
     }
   }
