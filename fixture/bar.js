@@ -1,3 +1,3 @@
 module.exports = function () {
-    console.log('bar')
+    console.log('This is bar.js')
 }

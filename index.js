@@ -140,7 +140,7 @@ var VinylServer = subclass(function (pt) {
 
         })
 
-        buf += '<hr>' + pkg.name + '@' + pkg.version
+        buf += '<hr><a href="' + pkg.homepage + '">' + pkg.name + '</a>@' + pkg.version
 
         return buf
 
@@ -170,9 +170,11 @@ var VinylServer = subclass(function (pt) {
      */
     pt.restart = function () {
 
+        var self = this
+
         return this.stop().then(function () {
 
-            return this.start()
+            return self.start()
 
         })
 
@@ -185,14 +187,21 @@ var VinylServer = subclass(function (pt) {
      */
     pt.stop = function () {
 
+        var self = this
+
         return new Promise(function (resolve) {
 
-            this.server.close(resolve)
+            self.server.close(function () { resolve() })
 
         })
 
     }
 
+    /**
+     * Gets the writable stream. When you write the vinyl object to this stream then it's going to be served as the contents of the corresponding path.
+     *
+     * @return {stream.Writable}
+     */
     pt.getStreamProcessor = function () {
 
         var self = this
@@ -238,23 +247,27 @@ var exports = function (opts) {
 
 /**
  * Restarts the server.
+ *
+ * @return {Promise}
  */
 exports.restart = function () {
 
-    if (serverInstance) { throw new Error('Server instance has not yet been initialized') }
+    if (!serverInstance) { throw new Error('Server instance has not yet been initialized') }
 
-    serverInstance.restart()
+    return serverInstance.restart()
 
 }
 
 /**
  * Stops the server.
+ *
+ * @return {Promise}
  */
 exports.stop = function () {
 
-    if (serverInstance) { throw new Error('Server instance has not yet been initialized') }
+    if (!serverInstance) { throw new Error('Server instance has not yet been initialized') }
 
-    serverInstance.stop()
+    return serverInstance.stop()
 
 }
 

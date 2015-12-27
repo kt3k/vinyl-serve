@@ -1,2 +1,8 @@
 # npm modules
 /node_modules
+
+# nyc
+/.nyc_output
+
+# coverage
+/coverage

@@ -10,11 +10,18 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "codecov.io": "^0.1.6",
+    "mocha": "^2.3.4",
+    "nyc": "^5.0.1",
     "souffle-cli": "^2.0.2",
+    "superagent": "^1.6.1",
     "vinyl-fs": "^2.2.1"
   },
   "scripts": {
-    "test": "echo WIP",
+    "test": "_mocha spec.js",
+    "cov": "nyc --reporter=lcov _mocha spec.js",
+    "codecov": "codecov < coverage/lcov.info",
     "lint": "souffle"
   },
   "repository": {
@@ -31,5 +38,19 @@
   "bugs": {
     "url": "https://github.com/kt3k/vinyl-serve/issues"
   },
-  "homepage": "https://github.com/kt3k/vinyl-serve#readme"
+  "homepage": "https://github.com/kt3k/vinyl-serve#readme",
+  "souffle": {
+    "globals": [
+      "describe",
+      "it",
+      "before"
+    ]
+  },
+  "config": {
+    "nyc": {
+      "exclude": [
+        "spec.js"
+      ]
+    }
+  }
 }
