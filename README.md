@@ -49,34 +49,33 @@ With the above example, if you have `js/foo.js`, it's served at the path `/js/fo
 
 # API
 
-The vinyl-server module takes the following options.
+```js
+var vinylServe = require('vinyl-serve')
+```
 
-## vinylServe
+## vinylServe(port)
+
+param|type  |description
+-----|------|-----
+port |number|The port number of the server (default: 7000)
 
 This returns stream processor which serves the contents at the given port.
 
-### port
+## vinylServe.stop(port)
 
-- type: `number`
-- The port number of the server
-
-## vinylServe.stop
+param|type  |description
+-----|------|-----
+port |number|The port number of the server (default: 7000)
 
 This restarts the server at the given port number. Throws error if there is no server at the port.
 
-### port
+## vinylServe.restart(port)
 
-- type: `number`
-- The port number of the server
-
-## vinylServe.restart
+param|type  |description
+-----|------|-----
+port |number|The port number of the server (default: 7000)
 
 This stops the server at the given port number. Throws error if there is no server at the port.
-
-### port
-
-- type: `number`
-- The port number of the server
 
 # Install
 
