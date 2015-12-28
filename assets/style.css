@@ -30,6 +30,11 @@ footer {
 
 a {
     text-decoration: none;
+    color: #00e;
+}
+
+a:visited {
+    color: #e0e;
 }
 
 .not-found-path {
@@ -45,13 +50,13 @@ a {
 .vinyl {
     font-family: courier;
     font-size: x-small;
-    color: #115588;
+    color: #333;
     cursor: pointer;
 }
 
 .vinyl[data-toggle="1"] {
     height: 50px;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 table {
@@ -60,26 +65,30 @@ table {
 
 td, hr, th, table {
     border-style: solid;
-    color: #888;
     border-color: #bbb;
 }
 
 td, th, hr {
     border-top-width: 1px;
-    border-left-width: 1px;
+    border-left-width: 0px;
     border-bottom-width: 0px;
     border-right-width: 0px;
 }
 
 table {
-    border-top-width: 0px;
-    border-left-width: 0px;
+    border-top-width: 1px;
+    border-left-width: 1px;
     border-bottom-width: 1px;
     border-right-width: 1px;
 }
 
+.paths {
+    margin: auto;
+    width: 90%;
+}
+
 .paths td {
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
 }
 
 .paths th {
