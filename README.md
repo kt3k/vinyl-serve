@@ -47,6 +47,13 @@ gulp.src('./js/**/*.js', {base: './'})
 
 With the above example, if you have `js/foo.js`, it's served at the path `/js/foo.js`, not `/foo.js`.
 
+## Debug
+
+At the address `__vinyl__`, you can see the debug page and find all the available paths in the server.
+
+![screenshot](https://kt3k.github.io/vinyl-serve/assets/ss.png)
+
+
 # API
 
 ```js

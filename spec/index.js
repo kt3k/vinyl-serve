@@ -24,9 +24,9 @@ describe('vinyl-serve', function () {
 
     })
 
-    it('serves at the given port', function (done) {
+    it('serves the debug page at the given port', function (done) {
 
-        request.get('localhost:7001').end(function (err, res) {
+        request.get('localhost:7001/__vinyl__').end(function (err, res) {
 
             expect(res.status).to.equal(200)
             done()
@@ -48,13 +48,25 @@ describe('vinyl-serve', function () {
 
     })
 
+    it('serves the 404 status when no item at the address', function (done) {
+
+        request.get('localhost:7001/nothing').end(function (err, res) {
+
+            expect(res.status).to.equal(404)
+
+            done()
+
+        })
+
+    })
+
     it('starts the server with port 7000 when none given', function (done) {
 
         vinylServe()
 
         setTimeout(function () {
 
-            request.get('localhost:7000/').end(function (err, res) {
+            request.get('localhost:7000/__vinyl__').end(function (err, res) {
 
                 expect(res.status).to.equal(200)
 
@@ -82,7 +94,7 @@ describe('vinyl-serve', function () {
 
             vinylServe.restart(7001).then(function () {
 
-                request.get('localhost:7001').end(function (err, res) {
+                request.get('localhost:7001/__vinyl__').end(function (err, res) {
 
                     expect(res.status).to.equal(200)
                     done()
@@ -111,7 +123,7 @@ describe('vinyl-serve', function () {
 
             vinylServe.stop(7001).then(function () {
 
-                request.get('localhost:7001').end(function (err) {
+                request.get('localhost:7001/__vinyl__').end(function (err) {
 
                     expect(err).to.not.equal(null)
                     expect(err.code).to.equal('ECONNREFUSED')

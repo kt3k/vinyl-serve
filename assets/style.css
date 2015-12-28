@@ -1,0 +1,56 @@
+body {
+    font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+a {
+    text-decoration: none;
+}
+
+.not-found-path {
+    font-family: courier;
+    font-weight: bold; color:
+    #115588;
+}
+
+#vinyl-toggle {
+    cursor: pointer;
+}
+
+.vinyl {
+    font-family: courier;
+    font-size: x-small;
+    color: #115588;
+    cursor: pointer;
+}
+
+.vinyl[data-toggle="1"] {
+    height: 50px;
+    overflow: hidden;
+}
+
+td, hr, th, table {
+    border-style: solid;
+    border-color: #bbb;
+}
+
+td, th, hr {
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+}
+
+table {
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+.paths td {
+    padding: 5px;
+}
+
+.paths th {
+    padding: 5px;
+}
