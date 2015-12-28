@@ -64,7 +64,7 @@ describe('vinyl-serve', function () {
 
         vinylServe()
 
-        setTimeout(function () {
+        vinylServe.getInstance().startPromise.then(function () {
 
             request.get('localhost:7000/__vinyl__').end(function (err, res) {
 
@@ -74,7 +74,7 @@ describe('vinyl-serve', function () {
 
             })
 
-        }, 300)
+        })
 
     })
 
