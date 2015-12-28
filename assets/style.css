@@ -1,5 +1,31 @@
 body {
-    font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+    font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px 15px 5px 15px;
+}
+
+header.sub {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+}
+
+.container {
+    margin: 15px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 75px;
+    padding-top: 35px;
+    line-height: 1.5;
+    border-top: 1px solid #eee;
+    color: #767676;
 }
 
 a {
@@ -28,8 +54,13 @@ a {
     overflow: hidden;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 td, hr, th, table {
     border-style: solid;
+    color: #888;
     border-color: #bbb;
 }
 
