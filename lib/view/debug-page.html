@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <style><%= css %></style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to <%= pkg.name %> debug page!</h1>
+    </header>
+    <header class="sub">
+      <h2>Available paths (<%= assets.length %>)</h2>
+    </header>
+    <div class="container">
+      <table class="paths" border="1" cellspacing="0">
+        <tr>
+          <th>path</th>
+          <th>mime type</th>
+          <th id="vinyl-toggle" data-toggle="1">vinyl</th>
+        </tr>
+        <% assets.forEach(function (asset) { %>
+          <tr>
+            <td><a href="<%= asset.getUrl() %>"><%= asset.getUrl() %></a></td>
+            <td><%= asset.getMimeType() %></td>
+            <td>
+              <pre class="vinyl" data-toggle="1"><%=
+                JSON.stringify(asset.vinyl, null, 2)
+              %></pre>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+    <footer>
+      <a href="<%= pkg.homepage %>"><%= pkg.name %></a>@<%= pkg.version %>
+    </footer>
+    <script><%= script %></script>
+  </body>
+</html>
