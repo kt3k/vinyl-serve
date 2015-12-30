@@ -37,7 +37,7 @@ describe('vinyl-serve', function () {
 
     it('serves the items in the vinyl stream', function (done) {
 
-        request.get('localhost:7001/foo.js').end(function (err, res) {
+        request.get('localhost:7001/foo.js').buffer().end(function (err, res) {
 
             expect(res.text).to.contain('This is foo.js')
             expect(res.text).to.contain('This is bar.js')
