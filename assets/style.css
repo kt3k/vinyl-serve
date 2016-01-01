@@ -5,8 +5,7 @@ body {
 }
 
 header {
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #eee;
     padding: 15px 15px 5px 15px;
 }
 
@@ -31,11 +30,6 @@ footer {
 
 a {
     text-decoration: none;
-    color: #00e;
-}
-
-a:visited {
-    color: #e0e;
 }
 
 .not-found-path {
@@ -48,15 +42,19 @@ a:visited {
     cursor: pointer;
 }
 
+.base-path {
+    color: #888;
+}
+
 .vinyl {
-    font-family: courier;
     font-size: x-small;
     color: #333;
     cursor: pointer;
 }
 
 .vinyl[data-toggle="1"] {
-    height: 50px;
+    height: 20px;
+    width: 20px;
     overflow-y: hidden;
 }
 
@@ -86,7 +84,7 @@ table {
 .paths {
     margin: auto;
     margin-top: 70px;
-    width: 90%;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .paths td {

@@ -15,12 +15,18 @@
         <tr>
           <th>path</th>
           <th>mime type</th>
+          <th>path (<span class="base-path">base in gray</span>)</th>
+          <th>mtime</th>
           <th id="vinyl-toggle" data-toggle="1">vinyl</th>
         </tr>
         <% assets.forEach(function (asset) { %>
           <tr>
             <td><a href="<%= asset.getUrl() %>"><%= asset.getUrl() %></a></td>
             <td><%= asset.getMimeType() %></td>
+            <td>
+              <%= asset.vinyl.path.replace(asset.vinyl.base, '<span class="base-path">$&</span>') %>
+            </td>
+            <td><%= asset.vinyl.stat.mtime.toJSON() %></td>
             <td>
               <pre class="vinyl" data-toggle="1"><%=
                 JSON.stringify(asset.vinyl, null, 2)
