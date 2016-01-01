@@ -150,7 +150,7 @@ describe('vinyl-serve', function () {
 
     describe('setDebugPageTitle', function () {
 
-        it('sets the debug page title', function () {
+        it('sets the debug page title', function (done) {
 
             vinylServe.setDebugPageTitle('Pupupupu <i>pupu</i>')
 
