@@ -148,4 +148,29 @@ describe('vinyl-serve', function () {
 
     })
 
+    describe('setDebugPageTitle', function () {
+
+        it('sets the debug page title', function () {
+
+            vinylServe.setDebugPageTitle('Pupupupu <i>pupu</i>')
+
+            vinylServe(7003)
+
+            vinylServe.getInstance(7003).startPromise.then(function () {
+
+                request.get('localhost:7003/__vinyl__').end(function (err, res) {
+
+                    expect(res.text).to.contain('<title>Pupupupu pupu</title>')
+                    expect(res.text).to.contain('<h1>Pupupupu <i>pupu</i></h1>')
+
+                    done()
+
+                })
+
+            })
+
+        })
+
+    })
+
 })

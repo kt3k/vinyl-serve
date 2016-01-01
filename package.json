@@ -22,6 +22,7 @@
   "scripts": {
     "test": "_mocha spec/",
     "cov": "nyc --reporter=lcov _mocha spec/",
+    "cov-open": "npm run cov && open coverage/lcov-report/index.html",
     "codecov": "codecov < coverage/lcov.info",
     "lint": "souffle"
   },

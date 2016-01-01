@@ -1,10 +1,11 @@
 <html>
   <head>
+    <title><%= title.replace(/<[^>]*>/g, '') %></title>
     <style><%= css %></style>
   </head>
   <body>
     <header>
-      <h1>Welcome to <%= pkg.name %> debug page!</h1>
+      <h1><%= title %></h1>
     </header>
     <header class="sub">
       <h2>Available paths (<%= assets.length %>)</h2>
@@ -30,6 +31,7 @@
       </table>
     </div>
     <footer>
+      This page is rendered by
       <a href="<%= pkg.homepage %>"><%= pkg.name %></a>@<%= pkg.version %>
     </footer>
     <script><%= script %></script>
