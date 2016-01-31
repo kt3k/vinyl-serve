@@ -84,6 +84,36 @@ port |number|The port number of the server (default: 7000)
 
 This stops the server at the given port number. Throws error if there is no server at the port.
 
+# API for module developer
+
+`vinyl-serve` has some more APIs which are maybe useful when someone wants to use this module as a part of another module.
+
+## vinylServe.setDebugPageTitle(title)
+
+- @param {String} title
+
+This overrides the debug page title.
+
+## vinylServe.setDebugPagePath(path)
+
+- @param {String} path
+
+This overrides the debug page path. The path have to start with '/'. (The default is `__vinyl__`.)
+
+Example. `/__mytool__`
+
+## vinylServer.setHandlerOfStarting(handler)
+
+- @param {Function} handler
+
+Sets the handler for the starting of the server. This handler is called when the server start listening. This handler is called with 2 parameters. The first one is the url of the root of the server and the second is the path of the debug page. ( e.g. `http://0.0.0.0:7000/` and `http://0.0.0.0:7000/__vinyl__` )
+
+## vinylServer.setHandlerOfPortError(handler)
+
+- @param {Function} handler
+
+Sets the handler for the case of the port number error. This handler is called when the server's port is already in use. This handler is called with 1 parameter which is the port number of the server.
+
 # Install
 
 ```
