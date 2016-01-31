@@ -173,4 +173,44 @@ describe('vinyl-serve', function () {
 
     })
 
+    describe('setDebugPagePath', function () {
+
+        it('sets the debug page\'s path', function () {
+
+            vinylServe.setDebugPagePath('__foo__')
+
+            expect(vinylServe.getInstance().constructor.debugPagePath).to.equal('__foo__')
+
+        })
+
+    })
+
+    describe('setHandlerOfStarting', function () {
+
+        it('sets the handler of the starting of the server', function () {
+
+            var handler = function () {}
+
+            vinylServe.setHandlerOfStarting(handler)
+
+            expect(vinylServe.getInstance().constructor.handlerOfStarting).to.equal(handler)
+
+        })
+
+    })
+
+    describe('setHandlerOfPortError', function () {
+
+        it('sets the handler of the port error', function () {
+
+            var handler = function () {}
+
+            vinylServe.setHandlerOfPortError(handler)
+
+            expect(vinylServe.getInstance().constructor.handlerOfPortError).to.equal(handler)
+
+        })
+
+    })
+
 })
