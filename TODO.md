@@ -1,5 +1,6 @@
 # TODO
 
-- switch to es2015
+- Switch to es2015
+- Add favicon feature
 
 # DONE
