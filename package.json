@@ -48,12 +48,10 @@
       "before"
     ]
   },
-  "config": {
-    "nyc": {
-      "exclude": [
-        "index.js",
-        "spec/"
-      ]
-    }
+  "nyc": {
+    "exclude": [
+      "index.js",
+      "spec/"
+    ]
   }
 }
