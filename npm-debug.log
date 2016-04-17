@@ -1,0 +1,130 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kt3k/.nvm/versions/node/v4.2.4/bin/node',
+1 verbose cli   '/Users/kt3k/.nvm/versions/node/v4.2.4/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.6
+3 info using node@v4.2.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/kt3k/tmp/vinyl-serve',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/kt3k/.npm/vinyl-serve/1.3.3/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/kt3k/.npm correctMkdir not in flight; initializing
+10 info lifecycle vinyl-serve@1.3.3~prepublish: vinyl-serve@1.3.3
+11 silly lifecycle vinyl-serve@1.3.3~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/kt3k/.npm/vinyl-serve/1.3.3/package.tgz',
+12 verbose tar pack   '/Users/kt3k/tmp/vinyl-serve' ]
+13 verbose tarball /Users/kt3k/.npm/vinyl-serve/1.3.3/package.tgz
+14 verbose folder /Users/kt3k/tmp/vinyl-serve
+15 verbose addLocalTarball adding from inside cache /Users/kt3k/.npm/vinyl-serve/1.3.3/package.tgz
+16 verbose correctMkdir /Users/kt3k/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd vinyl-serve@1.3.3
+18 verbose afterAdd /Users/kt3k/.npm/vinyl-serve/1.3.3/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/kt3k/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/kt3k/.npm/vinyl-serve/1.3.3/package/package.json written
+21 silly publish { name: 'vinyl-serve',
+21 silly publish   version: '1.3.3',
+21 silly publish   description: 'Serves the vinyl stream directly',
+21 silly publish   main: 'lib/index.js',
+21 silly publish   dependencies:
+21 silly publish    { 'es6-promise': '^3.0.2',
+21 silly publish      mime: '^1.3.4',
+21 silly publish      subclassjs: '^1.3.0',
+21 silly publish      through: '^2.3.8' },
+21 silly publish   devDependencies:
+21 silly publish    { browserify: '^13.0.0',
+21 silly publish      chai: '^3.4.1',
+21 silly publish      'codecov.io': '^0.1.6',
+21 silly publish      mocha: '^2.3.4',
+21 silly publish      nyc: '^6.4.0',
+21 silly publish      'souffle-cli': '^3.1.0',
+21 silly publish      superagent: '^1.6.1',
+21 silly publish      'vinyl-fs': '^2.2.1' },
+21 silly publish   scripts:
+21 silly publish    { test: '_mocha spec/',
+21 silly publish      cov: 'nyc --reporter=lcov _mocha spec/',
+21 silly publish      'cov-open': 'npm run cov && open coverage/lcov-report/index.html',
+21 silly publish      codecov: 'codecov < coverage/lcov.info',
+21 silly publish      lint: 'souffle' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/kt3k/vinyl-serve.git' },
+21 silly publish   keywords: [ 'vinyl', 'stream', 'server' ],
+21 silly publish   author:
+21 silly publish    { name: 'Yoshiya Hinosawa',
+21 silly publish      email: 'stibium121@gmail.com',
+21 silly publish      url: 'https://twitter.com/kt3k' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/kt3k/vinyl-serve/issues' },
+21 silly publish   homepage: 'https://github.com/kt3k/vinyl-serve#readme',
+21 silly publish   souffle: { globals: [ 'describe', 'it', 'before' ] },
+21 silly publish   config: { nyc: { exclude: [Object] } },
+21 silly publish   readme: '# vinyl-serve v1.3.3 [![Build Status](https://travis-ci.org/kt3k/vinyl-serve.svg?branch=master)](https://travis-ci.org/kt3k/vinyl-serve) [![codecov.io](https://codecov.io/github/kt3k/vinyl-serve/coverage.svg?branch=master)](https://codecov.io/github/kt3k/vinyl-serve?branch=master) [![npm version](https://img.shields.io/npm/v/vinyl-serve.svg)](https://www.npmjs.com/package/vinyl-serve)\n\n> Serves the vinyl stream directly\n\n# Usage\n\n```js\nimport gulp from \'gulp\'\nimport vinylServe from \'vinyl-serve\'\nimport someTransform from \'./somewhere\'\n\ngulp.src(\'src/**/*.js\')\n  .pipe(someTransform())\n  .pipe(vinylServe(7000))\n```\n\nThis starts the server at port 7000 and, for example, `localhost:7000/foo.js` responses the transformed contents of `src/foo.js`.\n\n# Recipes\n\n## Serve multiple source streams\n\n```js\ngulp.task(\'serve\', function () {\n\n  gulp.src(\'js/**/*.js\')\n    .pipe(someTransform())\n    .pipe(vinylServe(7000))\n\n  gulp.src(\'css/**/*.scss\')\n    .pipe(anotherTransform())\n    .pipe(vinylServe(7000))\n\n  gulp.src(\'html/**/*.html\')\n    .pipe(vinylServe(7000))\n\n})\n```\n\n## Modify the base path\n\n```js\ngulp.src(\'./js/**/*.js\', {base: \'./\'})\n  .pipe(someTransform())\n  .pipe(vinylServe(7000))\n```\n\nWith the above example, if you have `js/foo.js`, it\'s served at the path `/js/foo.js`, not `/foo.js`.\n\n## Debug\n\nAt the address `__vinyl__`, you can see the debug page and find all the available paths in the server.\n\n![screenshot](https://kt3k.github.io/vinyl-serve/assets/ss.png)\n\n\n# API\n\n```js\nvar vinylServe = require(\'vinyl-serve\')\n```\n\n## vinylServe(port)\n\nparam|type  |description\n-----|------|-----\nport |number|The port number of the server (default: 7000)\n\nThis returns stream processor which serves the contents at the given port.\n\n## vinylServe.stop(port)\n\nparam|type  |description\n-----|------|-----\nport |number|The port number of the server (default: 7000)\n\nThis restarts the server at the given port number. Throws error if there is no server at the port.\n\n## vinylServe.restart(port)\n\nparam|type  |description\n-----|------|-----\nport |number|The port number of the server (default: 7000)\n\nThis stops the server at the given port number. Throws error if there is no server at the port.\n\n# API for module developer\n\n`vinyl-serve` has some more APIs which are maybe useful when someone wants to use this module as a part of another module.\n\n## vinylServe.setDebugPageTitle(title)\n\n- @param {String} title\n\nThis overrides the debug page title.\n\n## vinylServe.setDebugPagePath(path)\n\n- @param {String} path\n\nThis overrides the debug page path. The path have to start with \'/\'. (The default is `__vinyl__`.)\n\nExample. `/__mytool__`\n\n## vinylServer.setHandlerOfStarting(handler)\n\n- @param {Function} handler\n\nSets the handler for the starting of the server. This handler is called when the server start listening. This handler is called with 2 parameters. The first one is the url of the root of the server and the second is the path of the debug page. ( e.g. `http://0.0.0.0:7000/` and `http://0.0.0.0:7000/__vinyl__` )\n\n## vinylServer.setHandlerOfPortError(handler)\n\n- @param {Function} handler\n\nSets the handler for the case of the port number error. This handler is called when the server\'s port is already in use. This handler is called with 1 parameter which is the port number of the server.\n\n# Install\n\n```\nnpm install vinyl-serve\n```\n\n# License\n\nMIT\n\n# History\n\n- 2016-04-17   v1.3.3   Fix bug of binary data handling.\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'b9be53063398cc285380f9383ac0409172d202e6',
+21 silly publish   _id: 'vinyl-serve@1.3.3',
+21 silly publish   _shasum: 'edce037751adf9c3d9508497d1b055d9f0e12a16',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name vinyl-serve
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'vinyl-serve',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'vinyl-serve',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/vinyl-serve
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/kt3k/.npm/vinyl-serve/1.3.3/package.tgz
+30 verbose request uri https://registry.npmjs.org/vinyl-serve
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 7:04:12 PM
+33 verbose request id 21015528be39f87f
+34 http request PUT https://registry.npmjs.org/vinyl-serve
+35 http 403 https://registry.npmjs.org/vinyl-serve
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '95',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Sun, 17 Apr 2016 10:04:14 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-nrt6130-NRT',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1460887453.885857,VS0,VE924',
+36 verbose headers   vary: 'Accept-Encoding' }
+37 verbose request invalidating /Users/kt3k/.npm/registry.npmjs.org/vinyl-serve on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: "You cannot publish over the previously published version 1.3.3." : vinyl-serve
+39 verbose stack     at makeError (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at Request._callback (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+39 verbose stack     at Request.self.callback (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:199:22)
+39 verbose stack     at emitTwo (events.js:87:13)
+39 verbose stack     at Request.emit (events.js:172:7)
+39 verbose stack     at Request.<anonymous> (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+39 verbose stack     at emitOne (events.js:82:20)
+39 verbose stack     at Request.emit (events.js:169:7)
+39 verbose stack     at IncomingMessage.<anonymous> (/Users/kt3k/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid vinyl-serve
+42 verbose cwd /Users/kt3k/tmp/vinyl-serve
+43 error Darwin 14.5.0
+44 error argv "/Users/kt3k/.nvm/versions/node/v4.2.4/bin/node" "/Users/kt3k/.nvm/versions/node/v4.2.4/bin/npm" "publish"
+45 error node v4.2.4
+46 error npm  v3.8.6
+47 error code E403
+48 error "You cannot publish over the previously published version 1.3.3." : vinyl-serve
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]
