@@ -1,4 +1,4 @@
-# vinyl-serve v1.3.2 [![Build Status](https://travis-ci.org/kt3k/vinyl-serve.svg?branch=master)](https://travis-ci.org/kt3k/vinyl-serve) [![codecov.io](https://codecov.io/github/kt3k/vinyl-serve/coverage.svg?branch=master)](https://codecov.io/github/kt3k/vinyl-serve?branch=master) [![npm version](https://img.shields.io/npm/v/vinyl-serve.svg)](https://www.npmjs.com/package/vinyl-serve)
+# vinyl-serve v1.3.3 [![Build Status](https://travis-ci.org/kt3k/vinyl-serve.svg?branch=master)](https://travis-ci.org/kt3k/vinyl-serve) [![codecov.io](https://codecov.io/github/kt3k/vinyl-serve/coverage.svg?branch=master)](https://codecov.io/github/kt3k/vinyl-serve?branch=master) [![npm version](https://img.shields.io/npm/v/vinyl-serve.svg)](https://www.npmjs.com/package/vinyl-serve)
 
 > Serves the vinyl stream directly
 
@@ -126,4 +126,4 @@ MIT
 
 # History
 
-- 2016-04-17   v1.3.1   Fix bug of binary data handling.
+- 2016-04-17   v1.3.3   Fix bug of binary data handling.
