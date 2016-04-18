@@ -1,9 +1,9 @@
 # TODO
 
-- Switch to es2015
 - Add favicon feature
 - Emit events
 
 # DONE
 
+- Switch to es2015
 - unable to serve binary correctly (possibly)
