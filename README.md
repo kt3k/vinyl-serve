@@ -84,6 +84,14 @@ port |number|The port number of the server (default: 7000)
 
 This stops the server at the given port number. Throws error if there is no server at the port.
 
+## vinylServe.isServerReady(port)
+
+param | type   | description
+------|--------|-------------
+port  | number | The port number of the server (default: 7000)
+
+This returns a promise which resolves when the server of the given port is ready. Returns null when server does't exist.
+
 # API for module developer
 
 `vinyl-serve` has some more APIs which are maybe useful when someone wants to use this module as a part of another module.

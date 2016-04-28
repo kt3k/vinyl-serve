@@ -148,6 +148,35 @@ describe('vinyl-serve', function () {
 
     })
 
+    describe('isServerReady', () => {
+
+        it('returns a promise which resolves when the server is ready', done => {
+
+            vinylServe(7011)
+
+            vinylServe.isServerReady(7011).then(() => {
+
+                request.get('localhost:7011/__vinyl__').end(function (err, res) {
+
+                    expect(err).to.equal(null)
+                    expect(res.status).to.equal(200)
+
+                    done()
+
+                })
+
+            })
+
+        })
+
+        it('returns null when the server of the port does not exist', () => {
+
+            expect(vinylServe.isServerReady(7012) == null).to.be.true
+
+        })
+
+    })
+
     describe('setDebugPageTitle', function () {
 
         it('sets the debug page title', function (done) {
@@ -156,7 +185,7 @@ describe('vinyl-serve', function () {
 
             vinylServe(7003)
 
-            vinylServe.getInstance(7003).startPromise.then(function () {
+            vinylServe.isServerReady(7003).then(function () {
 
                 request.get('localhost:7003/__vinyl__').end(function (err, res) {
 
