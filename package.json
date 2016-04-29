@@ -14,7 +14,7 @@
     "codecov.io": "^0.1.6",
     "mocha": "^2.3.4",
     "nyc": "^6.4.0",
-    "souffle-cli": "^3.1.0",
+    "souffle-cli": "^3.1.1",
     "superagent": "^1.6.1",
     "vinyl-fs": "^2.2.1"
   },
