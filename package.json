@@ -11,7 +11,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "chai": "^3.4.1",
-    "codecov.io": "^0.1.6",
+    "codecov.io": "^0.1.7",
     "mocha": "^2.3.4",
     "nyc": "^6.4.0",
     "souffle-cli": "^3.1.1",
