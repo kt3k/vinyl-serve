@@ -1,5 +1,6 @@
 # TODO
 
+- Do not show vinyl as dom in the list view, show in modal dialog instead because it is too big
 - Add favicon feature
 - Emit events
 
