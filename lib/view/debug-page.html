@@ -25,7 +25,7 @@
             <td>
               <%= asset.vinyl.path.replace(asset.vinyl.base, '<span class="base-path">$&</span>') %>
             </td>
-            <td><%= asset.vinyl.stat.mtime.toJSON() %></td>
+            <td><%= asset.getMtime() %></td>
           </tr>
         <% }) %>
       </table>
