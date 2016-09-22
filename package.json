@@ -14,7 +14,7 @@
     "chai": "^3.4.1",
     "codecov.io": "^0.1.6",
     "mocha": "^3.0.0",
-    "nyc": "^8.0.0",
+    "nyc": "^8.3.0",
     "standard": "^8.1.0",
     "superagent": "^2.1.0",
     "through": "^2.3.8",
@@ -51,6 +51,7 @@
   "nyc": {
     "exclude": [
       "index.js",
+      "node_modules/",
       "spec/"
     ]
   }
