@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect
 
-var VinylServer = require('../lib/VinylServer')
+var VinylServer = require('../lib/vinyl-server')
 
 describe('VinylServer', function () {
   it('constructs with the given port number', function () {
