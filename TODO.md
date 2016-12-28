@@ -1,7 +1,5 @@
 # TODO
 
-- fix: debug page does not show on windows
-
 # DONE
 
 - fix: fix link in not found page
