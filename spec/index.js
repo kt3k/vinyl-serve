@@ -35,6 +35,14 @@ describe('vinyl-serve', function () {
     })
   })
 
+  it('serves the items in the vinyl stream (under subdirectory)', function (done) {
+    request.get('localhost:7001/baz/spam.js').buffer().end(function (err, res) {
+      expect(res.text).to.contain('This is spam.js')
+
+      done()
+    })
+  })
+
   it('serves the 404 status when no item at the address', function (done) {
     request.get('localhost:7001/nothing').end(function (err, res) {
       expect(res.status).to.equal(404)
