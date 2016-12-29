@@ -7,15 +7,13 @@
     <header>
       <h1><%= title %></h1>
     </header>
-    <header class="sub">
+    <div>
       <h2>Available paths (<%= assets.length %>)</h2>
-    </header>
-    <div class="container">
-      <table class="paths" border="1" cellspacing="0">
+      <table>
         <tr>
           <th>path</th>
           <th>mime type</th>
-          <th>path (<span class="base-path">base in gray</span>)</th>
+          <th>source path (<span class="base-path">base in gray</span>)</th>
           <th>mtime</th>
         </tr>
         <% assets.forEach(function (asset) { %>
@@ -31,8 +29,14 @@
       </table>
     </div>
     <footer>
-      This page is rendered by
-      <a href="<%= pkg.homepage %>"><%= pkg.name %></a>@<%= pkg.version %>
+      <nav>
+        <ul>
+          <li>
+            The page is rendered by
+            <a href="<%= pkg.homepage %>"><%= pkg.name %></a>@<%= pkg.version %>
+          </li>
+        </ul>
+      </nav>
     </footer>
   </body>
 </html>
