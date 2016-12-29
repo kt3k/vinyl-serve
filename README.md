@@ -139,7 +139,7 @@ MIT
 
 # History
 
-- 2016-12-29   v2.6.1   Windwos bug fix.
+- 2016-12-29   v2.6.1   Windows bug fix.
 - 2016-12-29   v2.6.0   Update page design.
 - 2016-12-29   v2.5.3   Windows bug fix.
 - 2016-09-18   v2.4.0   Better mtime handling.
