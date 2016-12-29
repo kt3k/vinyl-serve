@@ -1,4 +1,4 @@
-# vinyl-serve v2.5.2
+# vinyl-serve v2.5.3
 
 > Serves the vinyl stream directly
 
@@ -139,5 +139,6 @@ MIT
 
 # History
 
+- 2016-12-29   v2.5.3   Windows bug fix.
 - 2016-09-18   v2.4.0   Better mtime handling.
 - 2016-04-17   v1.3.3   Fix bug of binary data handling.
