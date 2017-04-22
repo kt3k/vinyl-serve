@@ -16,6 +16,8 @@ describe('vinyl-serve', function () {
       this.queue(vinyl)
     })).pipe(vinylServe(7001))
 
+    vfs.src('fixture/**/*.html').pipe(vinylServe(7001))
+
     setTimeout(function () { done() }, 300)
   })
 
@@ -54,6 +56,15 @@ describe('vinyl-serve', function () {
   it('serves the 404 status when no item at the address', function (done) {
     request.get('localhost:7001/nothing').end(function (err, res) {
       expect(res.status).to.equal(404)
+
+      done()
+    })
+  })
+
+  it('serves index.html when the directory is requested', function (done) {
+    request.get('localhost:7001/baz/').end(function (err, res) {
+      expect(res.status).to.equal(200)
+      expect(res.text).to.contain('This is baz/index.html')
 
       done()
     })
