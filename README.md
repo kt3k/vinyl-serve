@@ -139,6 +139,7 @@ MIT
 
 # History
 
+- 2017-04-23   v2.7.0   Serve index.html.
 - 2016-12-29   v2.6.1   Windows bug fix.
 - 2016-12-29   v2.6.0   Update page design.
 - 2016-12-29   v2.5.3   Windows bug fix.
