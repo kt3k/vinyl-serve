@@ -7,3 +7,5 @@ require('vinyl-fs').src('fixture/**/*.js')
   })).pipe(require('./')())
 
 require('vinyl-fs').src('fixture/**/*.png').pipe(require('./')())
+require('vinyl-fs').src('fixture/**/*.css').pipe(require('./')())
+require('vinyl-fs').src('fixture/**/*.html').pipe(require('./')())

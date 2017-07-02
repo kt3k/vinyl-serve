@@ -8,23 +8,34 @@
       <h1><%= title %></h1>
     </header>
     <div>
-      <h2>Available paths (<%= assets.length %>)</h2>
+      <h2>Available paths (<%= Object.keys(assets).length %>)</h2>
       <table>
         <tr>
-          <th>path</th>
-          <th>mime type</th>
-          <th>source path (<span class="base-path">base in gray</span>)</th>
-          <th>mtime</th>
+          <th>Path</th>
+          <th>Last Modified</th>
         </tr>
-        <% assets.forEach(function (asset) { %>
+        <% mimes.forEach(function (assets) { %>
           <tr>
-            <td><a href="<%= asset.getUrl() %>"><%= asset.getUrl() %></a></td>
-            <td><%= asset.getMimeType() %></td>
-            <td>
-              <%= asset.vinyl.path.replace(asset.vinyl.base, '<span class="base-path">$&</span>') %>
-            </td>
-            <td><%= asset.getMtime() %></td>
+            <th colspan="3"><%= assets[0].getMimeType() %> (<%= assets.length %>)</th>
           </tr>
+          <% assets.forEach(function (asset) { %>
+            <tr>
+              <td title="<%= asset.vinyl.path %>">
+                <a href="<%= asset.getUrl() %>">
+                  <%= asset.getUrl() %>
+                </a>
+                <br />
+                <small class="gray"><%= asset.vinyl.path %></small>
+              </td>
+              <td title="<%= moment(asset.getMtime()).format('YYYY-MM-DD HH:mm:ss') %>">
+                <%= moment(asset.getMtime()).fromNow() %>
+                <br />
+                <span class="gray">
+                  <%= moment(asset.getMtime()).format() %>
+                </span>
+              </td>
+            </tr>
+          <% }) %>
         <% }) %>
       </table>
     </div>
