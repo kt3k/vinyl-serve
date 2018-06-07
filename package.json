@@ -3,6 +3,10 @@
   "version": "2.8.0",
   "description": "Serves the vinyl stream directly",
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "assets"
+  ],
   "dependencies": {
     "es6-promise": "^4.0.3",
     "mime": "^2.3.1",
