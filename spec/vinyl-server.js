@@ -1,5 +1,3 @@
-'use strict'
-
 var expect = require('chai').expect
 
 var VinylServer = require('../lib/vinyl-server')
@@ -23,6 +21,8 @@ describe('VinylServer', function () {
           done(new Error('Must not start 2 servers in the same port'))
         }).catch(function (e) {
           expect(e.code).to.equal('EADDRINUSE')
+
+          server0.stop()
 
           done()
         })

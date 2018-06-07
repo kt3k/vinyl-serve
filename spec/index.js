@@ -1,5 +1,4 @@
 /* eslint handle-callback-err: 0 */
-'use strict'
 
 var request = require('superagent')
 var expect = require('chai').expect
@@ -18,8 +17,16 @@ describe('vinyl-serve', function () {
 
     vfs.src('fixture/**/*.html').pipe(vinylServe(7001))
 
-    setTimeout(function () { done() }, 300)
+    setTimeout(function () {
+      done()
+    }, 300)
   })
+
+  /*
+  after(() => {
+    vinylServe.stop(7001)
+  })
+  */
 
   it('serves the debug page at the given port', function (done) {
     request.get('localhost:7001/__vinyl__').end(function (err, res) {
@@ -77,6 +84,8 @@ describe('vinyl-serve', function () {
       request.get('localhost:7000/__vinyl__').end(function (err, res) {
         expect(res.status).to.equal(200)
 
+        vinylServe.stop()
+
         done()
       })
     })
@@ -133,6 +142,8 @@ describe('vinyl-serve', function () {
           expect(err).to.equal(null)
           expect(res.status).to.equal(200)
 
+          vinylServe.stop(7011)
+
           done()
         })
       })
@@ -153,6 +164,8 @@ describe('vinyl-serve', function () {
         request.get('localhost:7003/__vinyl__').end(function (err, res) {
           expect(res.text).to.contain('<title>Pupupupu pupu</title>')
           expect(res.text).to.contain('<h1>Pupupupu <i>pupu</i></h1>')
+
+          vinylServe.stop(7003)
 
           done()
         })
