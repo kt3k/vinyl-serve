@@ -1,11 +1,11 @@
 /* eslint handle-callback-err: 0 */
 
-var request = require('superagent')
-var expect = require('chai').expect
-var vinylServe = require('../')
-var through = require('through')
-var browserify = require('browserify')
-var vfs = require('vinyl-fs')
+const request = require('superagent')
+const expect = require('chai').expect
+const vinylServe = require('../')
+const through = require('through')
+const browserify = require('browserify')
+const vfs = require('vinyl-fs')
 
 describe('vinyl-serve', function () {
   before(function (done) {
@@ -183,7 +183,7 @@ describe('vinyl-serve', function () {
 
   describe('setHandlerOfStarting', function () {
     it('sets the handler of the starting of the server', function () {
-      var handler = function () {}
+      const handler = function () {}
 
       vinylServe.setHandlerOfStarting(handler)
 
@@ -193,7 +193,7 @@ describe('vinyl-serve', function () {
 
   describe('setHandlerOfPortError', function () {
     it('sets the handler of the port error', function () {
-      var handler = function () {}
+      const handler = function () {}
 
       vinylServe.setHandlerOfPortError(handler)
 

@@ -1,18 +1,18 @@
-var expect = require('chai').expect
+const expect = require('chai').expect
 
-var VinylServer = require('../lib/vinyl-server')
+const VinylServer = require('../lib/vinyl-server')
 
 describe('VinylServer', function () {
   it('constructs with the given port number', function () {
-    var server = new VinylServer(7003)
+    const server = new VinylServer(7003)
 
     expect(server.port).to.equal(7003)
   })
 
   describe('start', function () {
     it('fails to start if the port is already in use', function (done) {
-      var server0 = new VinylServer(7005)
-      var server1
+      const server0 = new VinylServer(7005)
+      let server1
 
       server0.start().then(function () {
         server1 = new VinylServer(7005)
@@ -32,7 +32,7 @@ describe('VinylServer', function () {
 
   describe('handleErrorOnListen', function () {
     it('logs error stack if the error code is not EADDRINUSE', function () {
-      var server = new VinylServer(7009)
+      const server = new VinylServer(7009)
 
       server.handleErrorOnListen({stack: 'abc'})
 
