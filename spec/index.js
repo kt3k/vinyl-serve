@@ -9,11 +9,16 @@ const vfs = require('vinyl-fs')
 
 describe('vinyl-serve', () => {
   before(done => {
-    vfs.src('fixture/**/*.js').pipe(through(function (vinyl) {
-      vinyl.contents = browserify(vinyl.path).bundle()
+    vfs
+      .src('fixture/**/*.js')
+      .pipe(
+        through(function (vinyl) {
+          vinyl.contents = browserify(vinyl.path).bundle()
 
-      this.queue(vinyl)
-    })).pipe(vinylServe(7001))
+          this.queue(vinyl)
+        })
+      )
+      .pipe(vinylServe(7001))
 
     vfs.src('fixture/**/*.html').pipe(vinylServe(7001))
 
@@ -30,31 +35,40 @@ describe('vinyl-serve', () => {
   })
 
   it('serves the items in the vinyl stream', done => {
-    request.get('localhost:7001/foo.js').buffer().end((err, res) => {
-      expect(res.text).to.contain('This is foo.js')
-      expect(res.text).to.contain('This is bar.js')
+    request
+      .get('localhost:7001/foo.js')
+      .buffer()
+      .end((err, res) => {
+        expect(res.text).to.contain('This is foo.js')
+        expect(res.text).to.contain('This is bar.js')
 
-      done()
-    })
+        done()
+      })
   })
 
   it('serves the items in the vinyl stream (under subdirectory)', done => {
-    request.get('localhost:7001/baz/spam.js').buffer().end((err, res) => {
-      expect(res.text).to.contain('This is spam.js')
+    request
+      .get('localhost:7001/baz/spam.js')
+      .buffer()
+      .end((err, res) => {
+        expect(res.text).to.contain('This is spam.js')
 
-      done()
-    })
+        done()
+      })
   })
 
-  it('serves the items in the vinyl stream (under subsubdirectory)', (done) => {
-    request.get('localhost:7001/baz/egg/spam.js').buffer().end((err, res) => {
-      expect(res.text).to.contain('This is egg/spam.js')
+  it('serves the items in the vinyl stream (under subsubdirectory)', done => {
+    request
+      .get('localhost:7001/baz/egg/spam.js')
+      .buffer()
+      .end((err, res) => {
+        expect(res.text).to.contain('This is egg/spam.js')
 
-      done()
-    })
+        done()
+      })
   })
 
-  it('serves the 404 status when no item at the address', (done) => {
+  it('serves the 404 status when no item at the address', done => {
     request.get('localhost:7001/nothing').end((err, res) => {
       expect(res.status).to.equal(404)
 
@@ -62,7 +76,7 @@ describe('vinyl-serve', () => {
     })
   })
 
-  it('serves index.html when the directory is requested', (done) => {
+  it('serves index.html when the directory is requested', done => {
     request.get('localhost:7001/baz/').end((err, res) => {
       expect(res.status).to.equal(200)
       expect(res.text).to.contain('This is baz/index.html')
@@ -71,7 +85,7 @@ describe('vinyl-serve', () => {
     })
   })
 
-  it('starts the server with port 7000 when none given', (done) => {
+  it('starts the server with port 7000 when none given', done => {
     vinylServe()
 
     vinylServe.getInstance().startPromise.then(() => {
@@ -92,7 +106,7 @@ describe('vinyl-serve', () => {
   })
 
   describe('restart', () => {
-    it('restarts the server', (done) => {
+    it('restarts the server', done => {
       vinylServe.restart(7001).then(() => {
         request.get('localhost:7001/__vinyl__').end((err, res) => {
           expect(res.status).to.equal(200)
@@ -109,9 +123,9 @@ describe('vinyl-serve', () => {
   })
 
   describe('stop', () => {
-    it('stops the server', (done) => {
+    it('stops the server', done => {
       vinylServe.stop(7001).then(() => {
-        request.get('localhost:7001/__vinyl__').end((err) => {
+        request.get('localhost:7001/__vinyl__').end(err => {
           expect(err).to.not.equal(null)
           expect(err.code).to.equal('ECONNREFUSED')
 
@@ -144,12 +158,12 @@ describe('vinyl-serve', () => {
     })
 
     it('returns null when the server of the port does not exist', () => {
-      expect(vinylServe.isServerReady(7012) == null).to.be.true
+      expect(vinylServe.isServerReady(7012) == null).to.equal(true)
     })
   })
 
   describe('setDebugPageTitle', () => {
-    it('sets the debug page title', (done) => {
+    it('sets the debug page title', done => {
       vinylServe.setDebugPageTitle('Pupupupu <i>pupu</i>')
 
       vinylServe(7003)
@@ -168,10 +182,12 @@ describe('vinyl-serve', () => {
   })
 
   describe('setDebugPagePath', () => {
-    it('sets the debug page\'s path', () => {
+    it("sets the debug page's path", () => {
       vinylServe.setDebugPagePath('__foo__')
 
-      expect(vinylServe.getInstance().constructor.debugPagePath).to.equal('__foo__')
+      expect(vinylServe.getInstance().constructor.debugPagePath).to.equal(
+        '__foo__'
+      )
     })
   })
 
@@ -181,7 +197,9 @@ describe('vinyl-serve', () => {
 
       vinylServe.setHandlerOfStarting(handler)
 
-      expect(vinylServe.getInstance().constructor.handlerOfStarting).to.equal(handler)
+      expect(vinylServe.getInstance().constructor.handlerOfStarting).to.equal(
+        handler
+      )
     })
   })
 
@@ -191,7 +209,9 @@ describe('vinyl-serve', () => {
 
       vinylServe.setHandlerOfPortError(handler)
 
-      expect(vinylServe.getInstance().constructor.handlerOfPortError).to.equal(handler)
+      expect(vinylServe.getInstance().constructor.handlerOfPortError).to.equal(
+        handler
+      )
     })
   })
 })

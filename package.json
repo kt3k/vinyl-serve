@@ -17,8 +17,11 @@
     "browserify": "^16.2.2",
     "chai": "^4.0.0",
     "codecov": "^3.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.3",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
+    "prettier": "^1.13.4",
     "standard": "^11.0.1",
     "superagent": "^3.1.0",
     "through": "^2.3.8",
@@ -30,7 +33,8 @@
     "cov": "nyc --reporter=lcov _mocha spec/",
     "cov-open": "npm run cov && open coverage/lcov-report/index.html",
     "codecov": "npm run cov && codecov",
-    "lint": "standard"
+    "lint": "standard",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -57,6 +61,13 @@
       "index.js",
       "node_modules/",
       "spec/"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --no-semi --single-quote --write",
+      "standard --fix",
+      "git add"
     ]
   }
 }
