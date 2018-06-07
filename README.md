@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/kt3k/vinyl-serve.svg?branch=master)](https://travis-ci.org/kt3k/vinyl-serve)
 [![Build status](https://ci.appveyor.com/api/projects/status/e77cxvx09psna5mw?svg=true)](https://ci.appveyor.com/project/kt3k/vinyl-serve)
 [![codecov.io](https://codecov.io/github/kt3k/vinyl-serve/coverage.svg?branch=master)](https://codecov.io/github/kt3k/vinyl-serve?branch=master)
-[![npm version](https://img.shields.io/npm/v/vinyl-serve.svg)](https://www.npmjs.com/package/vinyl-serve) [![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/vinyl-serve.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/vinyl-serve.svg)](https://greenkeeper.io/)
 
 # Usage
 
