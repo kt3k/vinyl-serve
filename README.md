@@ -115,17 +115,23 @@ This overrides the debug page path. The path have to start with '/'. (The defaul
 
 Example. `/__mytool__`
 
-## vinylServer.setHandlerOfStarting(handler)
+## vinylServe.setHandlerOfStarting(handler)
 
 - @param {Function} handler
 
 Sets the handler for the starting of the server. This handler is called when the server start listening. This handler is called with 2 parameters. The first one is the url of the root of the server and the second is the path of the debug page. ( e.g. `http://0.0.0.0:7000/` and `http://0.0.0.0:7000/__vinyl__` )
 
-## vinylServer.setHandlerOfPortError(handler)
+## vinylServe.setHandlerOfPortError(handler)
 
 - @param {Function} handler
 
 Sets the handler for the case of the port number error. This handler is called when the server's port is already in use. This handler is called with 1 parameter which is the port number of the server.
+
+## vinylServe.addMiddleware(middleware)
+
+- @param {Function} middlware The connect middleware
+
+This adds the connect middleware to the server.
 
 # Install
 
@@ -139,6 +145,7 @@ MIT
 
 # History
 
+- 2018-06-09   v3.0.0   Add addMiddleware API.
 - 2017-04-23   v2.7.0   Serve index.html.
 - 2016-12-29   v2.6.1   Windows bug fix.
 - 2016-12-29   v2.6.0   Update page design.
