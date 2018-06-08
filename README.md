@@ -1,4 +1,4 @@
-# vinyl-serve v2.8.0
+# vinyl-serve v3.0.0
 
 > Serves the vinyl stream directly
 
