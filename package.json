@@ -21,7 +21,7 @@
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.2.0",
     "prettier": "^1.13.4",
     "standard": "^12.0.0",
     "superagent": "^4.0.0",
