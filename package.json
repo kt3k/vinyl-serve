@@ -1,6 +1,6 @@
 {
   "name": "vinyl-serve",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Serves the vinyl stream directly",
   "type": "commonjs",
   "main": "lib/index.js",

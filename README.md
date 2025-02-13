@@ -1,4 +1,4 @@
-# vinyl-serve v3.0.0
+# vinyl-serve v3.0.1
 
 > Serves the vinyl stream directly
 
@@ -155,7 +155,7 @@ MIT
 
 # History
 
-- 2018-06-09 v3.0.0 Add addMiddleware API.
+- 2018-06-09 v3.0.1 Add addMiddleware API.
 - 2017-04-23 v2.7.0 Serve index.html.
 - 2016-12-29 v2.6.1 Windows bug fix.
 - 2016-12-29 v2.6.0 Update page design.
