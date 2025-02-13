@@ -1,1 +1,1 @@
-console.log('This is egg/spam.js')
+console.log("This is egg/spam.js");

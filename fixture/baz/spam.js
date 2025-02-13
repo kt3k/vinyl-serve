@@ -1,1 +1,1 @@
-console.log('This is spam.js')
+console.log("This is spam.js");

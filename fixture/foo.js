@@ -1,2 +1,2 @@
 // This is foo.js
-require('./bar')()
+require("./bar")();
